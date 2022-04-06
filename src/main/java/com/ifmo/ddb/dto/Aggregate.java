@@ -11,6 +11,6 @@ public class Aggregate {
 
     private int sum;
     private double avg;
-    private int median;
+    private int count;
 
 }

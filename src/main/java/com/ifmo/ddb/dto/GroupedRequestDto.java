@@ -4,14 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @NoArgsConstructor
 @Getter
 @Builder
-public class TimeRange {
+public class GroupedRequestDto {
 
-    private LocalDate start;
-    private LocalDate finish;
+    private Query query;
+    private GroupBy groupBy;
 
 }
