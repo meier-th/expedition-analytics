@@ -56,10 +56,10 @@ public class CubeRepositoryImpl implements CubeRepository {
                     .avg(average)
                     .sum(sum)
                     .count(count).build();
-            return GroupedAggregate.builder().value(aggregate).group(year).build();
+            return new GroupedAggregate(year, aggregate);
         });
 
-        return AggregateRange.builder().data(groupedAggregates).build();
+        return new AggregateRange(groupedAggregates);
     }
 
     private String buildQuery(String queryStart, Query query) {

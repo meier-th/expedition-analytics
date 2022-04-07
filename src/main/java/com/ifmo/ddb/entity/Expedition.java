@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -17,12 +15,22 @@ import javax.persistence.Id;
 public class Expedition {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "start_city")
     private City startCity;
+    @ManyToOne
+    @JoinColumn(name = "finish_city")
     private City finishCity;
+    @ManyToOne
+    @JoinColumn(name = "ship")
     private Ship ship;
+    @ManyToOne
+    @JoinColumn(name = "crew")
     private Crew crew;
+    @OneToOne
+    @JoinColumn(name = "interval_r")
     private Interval interval;
     private int profit;
 

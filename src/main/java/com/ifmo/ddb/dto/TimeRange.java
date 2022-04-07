@@ -1,14 +1,14 @@
 package com.ifmo.ddb.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
 @Getter
-@Builder
+@Setter
 public class TimeRange {
 
     private LocalDate start;

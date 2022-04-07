@@ -1,12 +1,12 @@
 package com.ifmo.ddb.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Builder
+@Setter
 public class Aggregate {
 
     private int sum;

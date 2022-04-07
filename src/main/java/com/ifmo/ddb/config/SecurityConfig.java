@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(authenticationEntryPoint)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/feeder/**").hasAuthority(Role.DATA_FEEDER.name())
+                .antMatchers("/insertion/**").hasAuthority(Role.DATA_FEEDER.name())
                 .antMatchers("/analytics/**").hasAuthority(Role.ANALYTICS.name())
                 .anyRequest().permitAll()
                 .and()
