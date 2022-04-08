@@ -1,9 +1,6 @@
 package com.ifmo.ddb.controller;
 
-import com.ifmo.ddb.dto.Aggregate;
-import com.ifmo.ddb.dto.AggregateRange;
-import com.ifmo.ddb.dto.GroupedRequestDto;
-import com.ifmo.ddb.dto.Query;
+import com.ifmo.ddb.dto.*;
 import com.ifmo.ddb.service.AnalysisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +22,11 @@ public class AnalyticsController {
     @PostMapping("/grouped")
     public AggregateRange getRangedData(@RequestBody GroupedRequestDto requestDto) {
         return analysisService.getAggregateRange(requestDto.getQuery(), requestDto.getGroupBy());
+    }
+
+    @GetMapping("/options")
+    public Options getQueryOptions() {
+        return analysisService.getQueryOptions();
     }
 
     @ExceptionHandler(Exception.class)

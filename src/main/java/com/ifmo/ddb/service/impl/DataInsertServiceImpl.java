@@ -19,7 +19,7 @@ public class DataInsertServiceImpl implements DataInsertService {
 
     @Override
     public void saveExpedition(Expedition expedition) {
-        if (!cityRepository.exists(Example.of(expedition.getStartCity()))) {
+        if (cityRepository.findById(expedition.getStartCity().getId()).isEmpty()) {
             cityRepository.save(expedition.getStartCity());
         }
         if (!cityRepository.exists(Example.of(expedition.getFinishCity()))) {

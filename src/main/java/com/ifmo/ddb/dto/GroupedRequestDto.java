@@ -1,6 +1,5 @@
 package com.ifmo.ddb.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
