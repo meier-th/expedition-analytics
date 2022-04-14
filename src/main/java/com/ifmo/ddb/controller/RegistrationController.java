@@ -5,6 +5,8 @@ import com.ifmo.ddb.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +26,16 @@ public class RegistrationController {
         } catch (Exception error) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error.getMessage());
         }
+    }
+
+    @GetMapping(value = "/me", produces = "application/json")
+    public User getProfile() {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findUser(name);
+        if (user != null) {
+            user.setPassword(null);
+        }
+        return user;
     }
 
 }
