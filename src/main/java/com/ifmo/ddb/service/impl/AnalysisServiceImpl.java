@@ -1,6 +1,7 @@
 package com.ifmo.ddb.service.impl;
 
 import com.ifmo.ddb.dto.*;
+import com.ifmo.ddb.entity.repo.CityRepository;
 import com.ifmo.ddb.entity.repo.CrewRepository;
 import com.ifmo.ddb.entity.repo.ShipRepository;
 import com.ifmo.ddb.repo.CubeRepository;
@@ -35,5 +36,7 @@ public class AnalysisServiceImpl implements AnalysisService {
         options.setTimeRange(cubeRepository.getGeneralTimeRange());
         return options;
     }
+
+    
 
 }

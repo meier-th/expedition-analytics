@@ -1,5 +1,6 @@
 package com.ifmo.ddb.service.impl;
 
+import com.ifmo.ddb.dto.Options;
 import com.ifmo.ddb.entity.*;
 import com.ifmo.ddb.entity.repo.*;
 import com.ifmo.ddb.service.DataInsertService;
@@ -53,5 +54,14 @@ public class DataInsertServiceImpl implements DataInsertService {
     @Override
     public void saveCity(City city) {
         cityRepository.save(city);
+    }
+
+    @Override
+    public Options getInsertionOptions() {
+        Options options = new Options();
+        options.setCrews(crewRepository.findAll());
+        options.setCities(cityRepository.findAll());
+        options.setShips(shipRepository.findAll());
+        return options;
     }
 }

@@ -1,5 +1,6 @@
 package com.ifmo.ddb.dto;
 
+import com.ifmo.ddb.entity.City;
 import com.ifmo.ddb.entity.Crew;
 import com.ifmo.ddb.entity.Ship;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ public class Options {
     private List<Ship> ships;
     private List<Crew> crews;
     private List<Route> routes;
+    private List<City> cities;
     private TimeRange timeRange;
 
 }

@@ -1,5 +1,6 @@
 package com.ifmo.ddb.service;
 
+import com.ifmo.ddb.dto.Options;
 import com.ifmo.ddb.entity.*;
 
 public interface DataInsertService {
@@ -13,5 +14,7 @@ public interface DataInsertService {
     void saveShip(Ship ship);
 
     void saveCity(City city);
+
+    Options getInsertionOptions();
 
 }

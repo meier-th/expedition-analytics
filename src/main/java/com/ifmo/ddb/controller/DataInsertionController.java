@@ -1,5 +1,6 @@
 package com.ifmo.ddb.controller;
 
+import com.ifmo.ddb.dto.Options;
 import com.ifmo.ddb.entity.*;
 import com.ifmo.ddb.service.DataInsertService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,11 @@ public class DataInsertionController {
     @PostMapping("/interval")
     public void addInterval(@RequestBody Interval interval) {
         dataInsertService.saveInterval(interval);
+    }
+
+    @GetMapping("/options")
+    public Options getInsertionOptions() {
+        return dataInsertService.getInsertionOptions();
     }
 
     @ExceptionHandler(Exception.class)
