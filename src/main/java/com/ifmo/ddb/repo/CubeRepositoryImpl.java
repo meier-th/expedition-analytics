@@ -30,7 +30,7 @@ public class CubeRepositoryImpl implements CubeRepository {
     private final static String GET_FIELD_VALUES_QUERY = "SELECT DISTINCT %s AS field FROM expedition_v;";
     private final static String GET_GENERAL_TIME_RANGE_QUERY =
             "SELECT MIN(start_date) AS start, MAX(finish_date) AS finish FROM expedition_v;";
-    private final static String ROUTES_QUERY = "SELECT city_from.id AS fromId, city_from.name AS fromName, " +
+    private final static String ROUTES_QUERY = "SELECT route.route_id, city_from.id AS fromId, city_from.name AS fromName, " +
             "city_from.latitude AS fromLatitude, city_from.longitude AS fromLongitude, city_to.id AS toId, " +
             "city_to.name AS toName, city_to.latitude AS toLatitude, city_to.longitude AS toLongitude FROM " +
             "route INNER JOIN city city_from ON route.city_from = city_from.id INNER JOIN city city_to ON " +
@@ -116,7 +116,9 @@ public class CubeRepositoryImpl implements CubeRepository {
             double toLatitude = rs.getDouble("toLatitude");
             double toLongitude = rs.getDouble("toLongitude");
             City cityTo = new City(toId, toName, toLatitude, toLongitude);
-            return new Route(cityFrom, cityTo);
+
+            int id = rs.getInt("route_id");
+            return new Route(id, cityFrom, cityTo);
         });
     }
 

@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Route {
 
+    int id;
     private City from;
     private City to;
 
