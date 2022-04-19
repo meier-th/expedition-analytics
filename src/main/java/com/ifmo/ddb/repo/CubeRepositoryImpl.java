@@ -139,9 +139,17 @@ public class CubeRepositoryImpl implements CubeRepository {
             added = true;
         }
         if (query.getTimeRange() != null) {
-            queryBuilder.append("start_date BETWEEN \"").append(query.getTimeRange().getStart()).append("\" AND \"")
-                    .append(query.getTimeRange().getFinish()).append("\" AND ");
-            added = true;
+            if (query.getTimeRange().getStart() != null && query.getTimeRange().getFinish() != null) {
+                queryBuilder.append("start_date BETWEEN \"").append(query.getTimeRange().getStart()).append("\" AND \"")
+                        .append(query.getTimeRange().getFinish()).append("\" AND ");
+                added = true;
+            } else if (query.getTimeRange().getStart() != null) {
+                queryBuilder.append("start_date > \"").append(query.getTimeRange().getStart()).append("\" AND ");
+                added = true;
+            } else if (query.getTimeRange().getFinish() != null) {
+                queryBuilder.append("end_date < \"").append(query.getTimeRange().getFinish()).append("\" AND ");
+                added = true;
+            }
         }
         if (added) {
             queryBuilder.delete(queryBuilder.length() - 5, queryBuilder.length());
